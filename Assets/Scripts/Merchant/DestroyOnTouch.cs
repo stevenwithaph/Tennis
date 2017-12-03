@@ -6,8 +6,6 @@ using Merchant.Characters.Abilities;
 
 public class DestroyOnTouch : MonoBehaviour
 {
-    public int damage = 0;
-
     void OnCollisionEnter(Collision collision)
     {
         if(this.transform.parent)
