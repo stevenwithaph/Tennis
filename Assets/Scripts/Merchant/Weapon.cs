@@ -88,7 +88,7 @@ public class Weapon : MonoBehaviour
         Vector3 accuracyPosition = new Vector3(0, 0, accuracyRandom);
         accuracyPosition = spreadRotation * accuracyPosition;
 
-		Quaternion rotation = this.transform.rotation * Quaternion.Euler(0, 0, -this.rotationOffset);
+		Quaternion rotation = this.transform.rotation * Quaternion.Euler(0, -this.rotationOffset, 0);
 		Vector3 spawnRotated = rotation * this.offset;
 
         GameObject bullet = Instantiate(

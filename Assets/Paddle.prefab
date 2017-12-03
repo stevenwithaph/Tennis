@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4529320071584034}
   - component: {fileID: 212037343258093470}
+  - component: {fileID: 114174395093658946}
   m_Layer: 0
   m_Name: PaddleSprite
   m_TagString: Untagged
@@ -63,13 +64,24 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1910692154655150}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.38268346, y: 0, z: 0, w: 0.9238795}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4419668540960818}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114174395093658946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1910692154655150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbd8b0527e50b2c4f8bf96dc3eda9dc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114925150462862306
 MonoBehaviour:
   m_ObjectHideFlags: 1

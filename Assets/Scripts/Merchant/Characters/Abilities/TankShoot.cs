@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Merchant.Characters;
 using Merchant.Characters.Abilities.Base;
 
-namespace Merchant.Characters.Abilities
+public class TankShoot : AIAbility
 {
-    public class CharacterDirection : CharacterAbility
+	
+
+    // Update is called once per frame
+    void Update()
     {
 
     }

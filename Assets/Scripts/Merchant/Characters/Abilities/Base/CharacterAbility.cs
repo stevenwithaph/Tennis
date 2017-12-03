@@ -9,7 +9,7 @@ namespace Merchant.Characters.Abilities.Base
     {
         protected Character character;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             this.character = this.GetComponent<Character>();
         }

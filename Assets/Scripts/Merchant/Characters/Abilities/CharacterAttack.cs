@@ -25,9 +25,12 @@ namespace Merchant.Characters.Abilities
         public void Start()
         {
             this.holder = Util.CreateChildGameobject(this.gameObject, "WeaponHolder").transform;
-            this.characterSprite = this.GetComponent<SpriteRenderer>();
+            this.characterSprite = this.GetComponentInChildren<SpriteRenderer>();
 
-            this.SpawnWeapon();
+            if(this.startingWeapon)
+            {
+                this.SpawnWeapon();
+            }
         }
 
         private void SpawnWeapon()
@@ -57,7 +60,7 @@ namespace Merchant.Characters.Abilities
         {
             rotation = this.NormalizeAngle(rotation);
 
-            this.holder.rotation = Quaternion.Euler(0, 0, rotation + (this.currentEquip.rotationOffset * this.offset));
+            this.holder.rotation = Quaternion.Euler(0, rotation + (this.currentEquip.rotationOffset * this.offset), 0);
             
             if (rotation >= 90.0f && rotation <= 270.0f)
             {
@@ -82,7 +85,7 @@ namespace Merchant.Characters.Abilities
 
         public void Pressed()
         {
-        this.currentEquip.Pressed();
+            this.currentEquip.Pressed();
         }
 
         public void Released()

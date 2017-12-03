@@ -6,7 +6,7 @@ namespace Merchant
 {
 	public class Ball : MonoBehaviour 
 	{
-		private new Rigidbody2D rigidbody;
+		private new Rigidbody rigidbody;
 
 		private Vector2 direction;
 
@@ -17,23 +17,23 @@ namespace Merchant
 
 		void Start()
 		{
-			this.rigidbody = this.GetComponent<Rigidbody2D>();
+			this.rigidbody = this.GetComponent<Rigidbody>();
 			this.AdjustSpeed(Vector2.up, 10);
 
 			this.paddleLayer = LayerMask.NameToLayer("Paddle");
 		}
 
-		void OnCollisionEnter2D(Collision2D collison)
+		void OnCollisionEnter(Collision collison)
 		{
 			this.Bounce(collison.contacts[0].normal);
 		}
 
-		void OnTriggerEnter2D(Collider2D collider)
+		void OnTriggerEnter(Collider collider)
 		{
-			Vector2 collisionDirection = this.transform.position - collider.transform.position;
-			float angle = Mathf.Atan2(collisionDirection.y, collisionDirection.x) * Mathf.Rad2Deg;
+			Vector3 collisionDirection = this.transform.position - collider.transform.position;
+			float angle = Mathf.Atan2(collisionDirection.z, collisionDirection.x) * Mathf.Rad2Deg;
 
-			this.PaddleBounce(collider.transform.right, 0);
+			this.PaddleBounce(collider.transform.forward, 0);
 		}
 
 		void PaddleBounce(Vector2 direction, float distance)
