@@ -7,10 +7,10 @@ using Merchant.Characters.Abilities.Base;
 
 namespace Merchant.Characters.Abilities
 {
-    [RequireComponent(typeof(CharacterController2D))]
+    [RequireComponent(typeof(CharacterController))]
     public class CharacterMovement : CharacterAbility
     {
-        public Vector2 Direction
+        public Vector3 Direction
         {
             get
             {
@@ -41,30 +41,25 @@ namespace Merchant.Characters.Abilities
         private bool canMove = true;
         private bool isDashing = false;
 
-        private Vector2 direction;
-        private Vector2 dashDirection;
-        private CharacterController2D characterController;
+        private Vector3 direction;
+        private Vector3 dashDirection;
+        private CharacterController characterController;
 
         // Use this for initialization
         private void Start()
         {
-            this.characterController = this.GetComponent<CharacterController2D>();
-
-            Rigidbody2D body = this.GetComponent<Rigidbody2D>();
-
-            body.gravityScale = 0;
-            body.constraints = RigidbodyConstraints2D.FreezeAll;
+            this.characterController = this.GetComponent<CharacterController>();
         }
 
         private void Update()
         {
-            this.characterController.move(
+            this.characterController.Move(
                 this.direction * this.movementSpeed * Time.deltaTime
             );
 
             if(this.isDashing)
             {
-                this.characterController.move(
+                this.characterController.Move(
                     this.dashDirection * this.dashSpeed * Time.deltaTime
                 );
             }
@@ -81,7 +76,7 @@ namespace Merchant.Characters.Abilities
             this.canMove = true;
         }
 
-        public void Dash(Vector2 direction)
+        public void Dash(Vector3 direction)
         {
             this.dashDirection = direction;
             this.StartCoroutine(this.DashCoroutine());

@@ -49,7 +49,7 @@ public class Weapon : MonoBehaviour
         this.triggerDown = false;
     }
 
-    private IEnumerator Fire()
+    protected virtual IEnumerator Fire()
     {
         if (this.canFire)
         {
@@ -75,7 +75,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    private GameObject SpawnBullet(int currentBulletCount)
+    protected virtual GameObject SpawnBullet(int currentBulletCount)
     {
         float finalSpread = (float)(this.bulletCount-1) / (float)this.bulletCount * this.spread / 2;
 
@@ -88,7 +88,7 @@ public class Weapon : MonoBehaviour
         Vector3 accuracyPosition = new Vector3(0, 0, accuracyRandom);
         accuracyPosition = spreadRotation * accuracyPosition;
 
-		Quaternion rotation = this.transform.rotation * Quaternion.Euler(0, 0, -this.rotationOffset);
+		Quaternion rotation = this.transform.rotation * Quaternion.Euler(0, -this.rotationOffset, 0);
 		Vector3 spawnRotated = rotation * this.offset;
 
         GameObject bullet = Instantiate(

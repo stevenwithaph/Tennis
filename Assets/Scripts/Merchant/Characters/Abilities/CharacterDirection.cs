@@ -8,10 +8,6 @@ namespace Merchant.Characters.Abilities
 {
     public class CharacterDirection : CharacterAbility
     {
-        private void Start()
-        {
-
-        }
 
     }
 }
