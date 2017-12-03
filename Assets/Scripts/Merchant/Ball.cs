@@ -62,7 +62,6 @@ namespace Merchant
 
         void Bounce(Vector3 normal)
         {
-            Debug.Log(normal);
             Vector3 newDirection = Vector3.Reflect(direction, normal);
             this.AdjustSpeed(newDirection, this.speed);
         }

@@ -66,12 +66,18 @@ namespace Merchant.Characters.Abilities
 
             if (rotation >= 90.0f && rotation <= 270.0f)
             {
-                this.weaponSrpite.flipY = true;
+                if (this.weaponSrpite)
+                {
+                    this.weaponSrpite.flipY = true;
+                }
                 this.characterSprite.flipX = true;
             }
             else
             {
-                this.weaponSrpite.flipY = false;
+                if (this.weaponSrpite)
+                {
+                    this.weaponSrpite.flipY = false;
+                }
                 this.characterSprite.flipX = false;
             }
 

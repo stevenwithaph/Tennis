@@ -8,7 +8,7 @@ public class TankShoot : AIAbility
 {
     public bool isFiring = false;
 
-    public float animationTimer = 1.08f;
+    public float animationTimer = 1.05f;
 
     public void Fire()
     {
