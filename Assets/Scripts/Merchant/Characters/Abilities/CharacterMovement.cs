@@ -63,6 +63,9 @@ namespace Merchant.Characters.Abilities
                     this.dashDirection * this.dashSpeed * Time.deltaTime
                 );
             }
+            Vector3 position = this.character.transform.position;
+            position.y = 0;
+            this.character.transform.position = position;
         }
 
         public void PreventMovement()
