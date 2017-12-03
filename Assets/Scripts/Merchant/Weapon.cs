@@ -49,7 +49,7 @@ public class Weapon : MonoBehaviour
         this.triggerDown = false;
     }
 
-    private IEnumerator Fire()
+    protected virtual IEnumerator Fire()
     {
         if (this.canFire)
         {
@@ -75,7 +75,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    private GameObject SpawnBullet(int currentBulletCount)
+    protected virtual GameObject SpawnBullet(int currentBulletCount)
     {
         float finalSpread = (float)(this.bulletCount-1) / (float)this.bulletCount * this.spread / 2;
 

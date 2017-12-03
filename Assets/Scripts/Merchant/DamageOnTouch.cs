@@ -8,7 +8,7 @@ public class DamageOnTouch : MonoBehaviour
 {
     public int damage = 0;
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter(Collision collision)
     {
         CharacterHealth characterHealth = collision.gameObject.GetComponent<CharacterHealth>();
         if (characterHealth)

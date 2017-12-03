@@ -15,9 +15,9 @@ TagManager:
   - 
   - Player
   - Paddle
-  - 
-  - 
-  - 
+  - Bullet
+  - Wall
+  - Enemy
   - 
   - 
   - 
@@ -40,6 +40,9 @@ TagManager:
   m_SortingLayers:
   - name: Ground
     uniqueID: 2901158675
+    locked: 0
+  - name: Decal
+    uniqueID: 2973102361
     locked: 0
   - name: Default
     uniqueID: 0

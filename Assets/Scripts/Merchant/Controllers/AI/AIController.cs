@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Merchant.Characters;
+using Merchant.Controllers.Base;
 
-public class AIController : MonoBehaviour {
+public class AIController : Controller {
 
 	protected Character player;
+
+	protected TankShoot tankShoot;
         
 	protected void Awake()
 	{
@@ -14,5 +17,12 @@ public class AIController : MonoBehaviour {
 		{
 			this.player = playerGameObject.GetComponent<Character>();
 		}
+
+		this.tankShoot = this.character.GetComponent<TankShoot>();
+	}
+
+	protected void Update()
+	{
+		this.tankShoot.Fire();
 	}
 }

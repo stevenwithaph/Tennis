@@ -10,8 +10,6 @@ namespace Merchant.Characters.Abilities
         //  Should have a weapon class or something
         public bool isAttacking = false;
 
-        public GameObject paddleObject;
-
         public Weapon startingWeapon;
 
         private Transform holder;
@@ -25,9 +23,10 @@ namespace Merchant.Characters.Abilities
         public void Start()
         {
             this.holder = Util.CreateChildGameobject(this.gameObject, "WeaponHolder").transform;
+            this.holder.transform.localPosition = new Vector3(0, 0.5f, 0);
             this.characterSprite = this.GetComponentInChildren<SpriteRenderer>();
 
-            if(this.startingWeapon)
+            if (this.startingWeapon)
             {
                 this.SpawnWeapon();
             }
@@ -49,37 +48,43 @@ namespace Merchant.Characters.Abilities
             weaponTransform.parent = this.holder;
 
             this.weaponSrpite = spawnedWeapon.GetComponentInChildren<SpriteRenderer>();
-            this.weaponSrpite.sortingOrder = this.characterSprite.sortingOrder;
+            if (this.weaponSrpite)
+            {
+                this.weaponSrpite.sortingOrder = this.characterSprite.sortingOrder;
+            }
 
             this.currentEquip = spawnedWeapon;
             this.currentEquip.owner = this.character;
         }
-        
+
 
         public void SetRotation(float rotation)
         {
             rotation = this.NormalizeAngle(rotation);
 
             this.holder.rotation = Quaternion.Euler(0, rotation + (this.currentEquip.rotationOffset * this.offset), 0);
-            
+
             if (rotation >= 90.0f && rotation <= 270.0f)
             {
-                this.weaponSrpite.flipX = true;
+                this.weaponSrpite.flipY = true;
                 this.characterSprite.flipX = true;
             }
             else
             {
-                this.weaponSrpite.flipX = false;
+                this.weaponSrpite.flipY = false;
                 this.characterSprite.flipX = false;
             }
 
-            if (rotation >= 0.0f && rotation <= 180.0f)
+            if (this.weaponSrpite)
             {
-                this.weaponSrpite.sortingOrder = this.characterSprite.sortingOrder - 1;
-            }
-            else
-            {
-                this.weaponSrpite.sortingOrder = this.characterSprite.sortingOrder + 1;
+                if (rotation >= 0.0f && rotation <= 180.0f)
+                {
+                    this.weaponSrpite.sortingOrder = this.characterSprite.sortingOrder - 1;
+                }
+                else
+                {
+                    this.weaponSrpite.sortingOrder = this.characterSprite.sortingOrder + 1;
+                }
             }
         }
 
