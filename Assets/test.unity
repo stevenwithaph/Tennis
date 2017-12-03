@@ -440,6 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 2050225625}
   attackRange: 10
+  minimumDistance: 5
   minTimeBetweenAttacks: 2
   maxTimeBetweenAttacks: 5
 --- !u!1 &1023788185
@@ -555,6 +556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 468350627}
   attackRange: 10
+  minimumDistance: 5
 --- !u!4 &1206078846
 Transform:
   m_ObjectHideFlags: 0
@@ -966,6 +968,16 @@ Prefab:
       propertyPath: startingWeapon
       value: 
       objectReference: {fileID: 114450566557021804, guid: ec764e07bbf35450f8ef3633a44aed9e,
+        type: 2}
+    - target: {fileID: 1397989376471218, guid: a7f2495b7c01344dc8790beac2fd579c, type: 2}
+      propertyPath: m_Name
+      value: Sprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 95017142003374326, guid: a7f2495b7c01344dc8790beac2fd579c,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: d4ffbe309e5d248f78fbf54973f6c7b2,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7f2495b7c01344dc8790beac2fd579c, type: 2}

@@ -7,11 +7,6 @@ public class BotController : AIController
 {
     protected SKStateMachine<TankController> machine;
 
-    protected override void Start()
-    {
-
-    }
-
     void Update()
     {
         Vector3 direction = this.VectorToTarget();
