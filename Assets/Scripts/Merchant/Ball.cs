@@ -11,7 +11,7 @@ namespace Merchant
         private Vector3 direction;
 
         private float speed = 10;
-        private float hitIncrease = 0.1f;
+        private float hitIncrease = 1f;
 
         private LayerMask paddleLayer;
         private LayerMask wallLayer;
@@ -33,6 +33,8 @@ namespace Merchant
         {
             if (collision.collider.gameObject.layer == this.wallLayer.value)
             {
+                Debug.Log(collision.contacts.Length);
+                Debug.Log(collision.contacts[0].normal);
                 this.Bounce(collision.contacts[0].normal);
             }
             else if (collision.collider.gameObject.layer == this.enemyLayer.value ||

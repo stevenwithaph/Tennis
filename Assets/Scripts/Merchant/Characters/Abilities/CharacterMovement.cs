@@ -63,6 +63,7 @@ namespace Merchant.Characters.Abilities
                     this.dashDirection * this.dashSpeed * Time.deltaTime
                 );
             }
+
             Vector3 position = this.character.transform.position;
             position.y = 0;
             this.character.transform.position = position;
@@ -89,6 +90,7 @@ namespace Merchant.Characters.Abilities
         {
             this.isDashing = true;
             this.canMove = false;
+            
             yield return new WaitForSeconds(this.dashTime);
 
             this.isDashing = false;
