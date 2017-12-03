@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114851391721090698}
   - component: {fileID: 54934135107890942}
   - component: {fileID: 114139931774300938}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BotBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

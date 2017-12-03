@@ -33,8 +33,6 @@ namespace Merchant
         {
             if (collision.collider.gameObject.layer == this.wallLayer.value)
             {
-                Debug.Log(collision.contacts.Length);
-                Debug.Log(collision.contacts[0].normal);
                 this.Bounce(collision.contacts[0].normal);
             }
             else if (collision.collider.gameObject.layer == this.enemyLayer.value ||

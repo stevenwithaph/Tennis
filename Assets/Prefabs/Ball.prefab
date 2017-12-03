@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4338761755749168}
   - component: {fileID: 212268084743892284}
   - component: {fileID: 114983647251445966}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,8 @@ GameObject:
   - component: {fileID: 54015671443463406}
   - component: {fileID: 135894717757944008}
   - component: {fileID: 114495499541625322}
-  m_Layer: 0
+  - component: {fileID: 114044781506946686}
+  m_Layer: 13
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1487861053500328}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.495746, y: 0.2, z: 1.4630759}
+  m_LocalPosition: {x: 5.43, y: 0.2, z: -3.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4338761755749168}
@@ -86,8 +87,21 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Constraints: 116
+  m_CollisionDetection: 1
+--- !u!114 &114044781506946686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1487861053500328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919c2d35419db4eafb00dc4a287ba75a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDamage: 0
+  maxDamage: 3
 --- !u!114 &114495499541625322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,7 +134,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1875
+  m_Radius: 0.15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212268084743892284
 SpriteRenderer:

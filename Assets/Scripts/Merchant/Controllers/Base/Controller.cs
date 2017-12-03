@@ -12,7 +12,6 @@ namespace Merchant.Controllers.Base
         public virtual void Posses(Character character)
         {
             this.character = character;
-            Debug.Log(this.character);
         }
 
         public virtual void Unposses()

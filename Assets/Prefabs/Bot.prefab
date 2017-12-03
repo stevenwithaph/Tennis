@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 114330715853839288}
   - component: {fileID: 95017142003374326}
   m_Layer: 12
-  m_Name: GameObject
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1133051685072090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.63, y: 0.10000013, z: 0}
+  m_LocalPosition: {x: 3.63, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4702656423434942}
@@ -86,7 +86,7 @@ Animator:
   m_GameObject: {fileID: 1397989376471218}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4fcef409cc21c49edb1db49da51ec399, type: 2}
+  m_Controller: {fileID: 22100000, guid: d4ffbe309e5d248f78fbf54973f6c7b2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -166,7 +166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAttacking: 0
-  startingWeapon: {fileID: 0}
+  startingWeapon: {fileID: 114450566557021804, guid: ec764e07bbf35450f8ef3633a44aed9e,
+    type: 2}
 --- !u!143 &143403312629545294
 CharacterController:
   m_ObjectHideFlags: 1
@@ -198,7 +199,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 250a28c38a3b64b85a860ce4ebf94bc8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

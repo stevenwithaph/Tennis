@@ -15,6 +15,10 @@ public class BotController : AIController
 		{
 			this.character.movement.Direction = direction;
 		}
+		else
+		{
+			this.character.movement.Direction = Vector3.zero;
+		}
 
         if (this.IsTargetInRange())
         {

@@ -15,7 +15,7 @@ namespace Merchant.Characters.Abilities
 
         public int maxHealth = 10;
 
-        private float invulnerabilityTimer = 2.0f;
+        private float invulnerabilityTimer = 0f;
         private bool isInvulnerable = false;
 
         private new Renderer renderer;
