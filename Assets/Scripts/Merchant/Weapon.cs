@@ -79,11 +79,11 @@ public class Weapon : MonoBehaviour
     {
 		Quaternion rotation = this.transform.rotation * Quaternion.Euler(0, -this.rotationOffset, 0);
         
-        Vector3 offset = rotation * (Vector3.right * this.offset);
+        Vector3 offset = new Vector3(0, 0, 0.35f);
 
         GameObject bullet = Instantiate(
             this.bullet,
-            this.spawn.position,//+ offset,
+            this.spawn.position + offset,//+ offset,
             rotation
         );
 
