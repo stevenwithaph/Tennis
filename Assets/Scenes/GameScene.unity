@@ -961,29 +961,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114157668150210456, guid: e9bb29556b59a452bbe590db7b26af68,
         type: 2}
-      propertyPath: tankSpawnInterval
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114157668150210456, guid: e9bb29556b59a452bbe590db7b26af68,
-        type: 2}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 2076964302}
     - target: {fileID: 114157668150210456, guid: e9bb29556b59a452bbe590db7b26af68,
         type: 2}
-      propertyPath: enemyDrop
-      value: 
-      objectReference: {fileID: 1752770213783204, guid: 00f21496f251d4c9aa303605e4d38c1f,
-        type: 2}
-    - target: {fileID: 114157668150210456, guid: e9bb29556b59a452bbe590db7b26af68,
-        type: 2}
       propertyPath: gameOverPanel
       value: 
       objectReference: {fileID: 1773176587}
-    - target: {fileID: 1599641304094306, guid: e9bb29556b59a452bbe590db7b26af68, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9bb29556b59a452bbe590db7b26af68, type: 2}
   m_IsPrefabParent: 0

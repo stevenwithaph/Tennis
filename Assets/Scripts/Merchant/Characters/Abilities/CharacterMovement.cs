@@ -91,7 +91,7 @@ namespace Merchant.Characters.Abilities
             this.isDashing = true;
             this.canMove = false;
             
-            yield return new WaitForSeconds(this.dashTime);
+            yield return new WaitForSecondsRealtime(this.dashTime);
 
             this.isDashing = false;
             this.canMove = true;

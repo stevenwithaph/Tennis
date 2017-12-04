@@ -27,7 +27,6 @@ GameObject:
   - component: {fileID: 114053454942729914}
   - component: {fileID: 114288216792358300}
   - component: {fileID: 114784717755251772}
-  - component: {fileID: 114083197957034558}
   m_Layer: 12
   m_Name: Tank
   m_TagString: Untagged
@@ -112,19 +111,6 @@ MonoBehaviour:
   animationTimer: 1.08
   minTimeBetweenAttacks: 5
   maxTimeBetweenAttacks: 8
---- !u!114 &114083197957034558
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1343605681808932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ab98cffd8ba343b38790aeddc7a9503, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 10
 --- !u!114 &114288216792358300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,8 +195,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ab98cffd8ba343b38790aeddc7a9503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
-  maxHealth: 6
+  health: 0
+  maxHealth: 2
+  freezeTimeOnHit: 0
 --- !u!143 &143278158508621762
 CharacterController:
   m_ObjectHideFlags: 1

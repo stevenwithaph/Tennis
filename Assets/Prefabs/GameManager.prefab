@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af42f95e0898348d9bc29173f0261877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTimeFrozen: 0
   tank: {fileID: 1343605681808932, guid: 21c56590d4ba84f7a8fd744592293faa, type: 2}
   tankController: {fileID: 1431396048358138, guid: 8edf5dd80713d438683e2696abfb5c45,
     type: 2}
@@ -60,10 +61,12 @@ MonoBehaviour:
   player: {fileID: 1405886018984822, guid: 5a56d7b9d1075014ca2212c78283302d, type: 2}
   playerController: {fileID: 1832156883031826, guid: 0fe527f424459074faf50e104227adec,
     type: 2}
+  enemyDrop: {fileID: 1752770213783204, guid: 00f21496f251d4c9aa303605e4d38c1f, type: 2}
   tankSpawnInterval: 5
   playerCamera: {fileID: 0}
   minimumPosition: {x: -10, y: 0, z: -7}
   maximumPosition: {x: 10, y: 0, z: 7}
+  gameOverPanel: {fileID: 0}
 --- !u!114 &114509464549434536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,6 +100,16 @@ MonoBehaviour:
     automaticallyRecycleParticleSystems: 0
     persistBetweenScenes: 0
   - prefab: {fileID: 1487861053500328, guid: 34b557249665c5a44b411a30761a00e7, type: 2}
+    instancesToPreallocate: 5
+    instancesToAllocateIfEmpty: 1
+    imposeHardLimit: 0
+    hardLimit: 5
+    cullExcessPrefabs: 0
+    instancesToMaintainInPool: 5
+    cullInterval: 10
+    automaticallyRecycleParticleSystems: 0
+    persistBetweenScenes: 0
+  - prefab: {fileID: 1752770213783204, guid: 00f21496f251d4c9aa303605e4d38c1f, type: 2}
     instancesToPreallocate: 5
     instancesToAllocateIfEmpty: 1
     imposeHardLimit: 0

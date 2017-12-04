@@ -19,7 +19,7 @@ namespace Merchant
         private Vector3 direction;
 
         private float speed = 10;
-        private float hitIncrease = 5.0f;
+        public float hitIncrease = 2.50f;
 
         public float initialSpeed = 10.0f;
 
@@ -102,8 +102,6 @@ namespace Merchant
             this.rigidbody.velocity = direction * speed;
             this.speed = this.rigidbody.velocity.magnitude;
             this.direction = this.rigidbody.velocity.normalized;
-
-            Debug.Log(this.direction);
         }
 
         void CheckForDeath()

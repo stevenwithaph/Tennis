@@ -13,7 +13,7 @@ namespace Merchant.Characters.Abilities
 
         public Action<Character> OnDeath;
 
-        public int maxHealth = 10;
+        public int maxHealth = 2;
 
         public bool freezeTimeOnHit = false;
 
@@ -40,8 +40,6 @@ namespace Merchant.Characters.Abilities
 
             this.health -= damage;
 
-            this.StartCoroutine(this.Flash());
-
             if (this.health <= 0)
             {
                 this.health = 0;
@@ -52,13 +50,17 @@ namespace Merchant.Characters.Abilities
                     this.OnDeath(this.character);
                 }
             }
+            else
+            {
+                this.StartCoroutine(this.Flash());
+            }
         }
 
         protected IEnumerator Flash()
         {
             this.renderer.material.SetFloat("_FlashAmount", 1);
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSecondsRealtime(0.1f);
 
             this.renderer.material.SetFloat("_FlashAmount", 0);
         }

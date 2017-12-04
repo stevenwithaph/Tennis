@@ -30,26 +30,28 @@ public class TankShoot : AIAbility
     {
         if (this.canFire)
         {
+            Debug.Log("Firing");
+            this.canFire = false;
             this.StartCoroutine(this.FireCoroutine());
         }
     }
 
     private void HandleDeath(Character character)
     {
+        this.character.health.OnDeath -= HandleDeath;
         this.StopAllCoroutines();
     }
 
     private IEnumerator FireCoroutine()
     {
         this.isFiring = true;
-        this.canFire = false;
-        yield return new WaitForSeconds(animationTimer);
+        yield return new WaitForSecondsRealtime(animationTimer);
         this.character.attack.Pressed();
         this.character.attack.Released();
 
         this.isFiring = false;
 
-        yield return new WaitForSeconds(Random.Range(minTimeBetweenAttacks, maxTimeBetweenAttacks));
+        yield return new WaitForSecondsRealtime(Random.Range(minTimeBetweenAttacks, maxTimeBetweenAttacks));
         this.canFire = true;
     }
 }

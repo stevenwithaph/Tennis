@@ -28,7 +28,6 @@ public class AIController : Controller {
 
 	public override void Posses(Character character)
 	{
-		Debug.Log(character);
 		base.Posses(character);
 	}
 

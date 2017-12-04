@@ -89,6 +89,8 @@ public class GameManager : MonoBehaviour
                 this.SpawnTank(position);
                 break;
         }
+
+        enemyDrop.OnDrop -= SpawnEnemy;
     }
 
     void SpawnTank(Vector3 position)
@@ -121,7 +123,7 @@ public class GameManager : MonoBehaviour
         playerCharacter.GetComponent<CharacterHealth>().OnDeath += HandlePlayerDeath;
         controller.Posses(playerCharacter);
 
-        //this.playerCamera.target = playerCharacter.transform;
+        this.playerCamera.target = playerCharacter.transform;
     }
 
     IEnumerator EnemySpawner()

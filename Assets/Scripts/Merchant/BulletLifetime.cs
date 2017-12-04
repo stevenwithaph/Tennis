@@ -14,7 +14,7 @@ public class BulletLifetime : MonoBehaviour {
 	
 	IEnumerator LifeTimeCoroutine()
 	{
-		yield return new WaitForSeconds(this.lifeTime);
+		yield return new WaitForSecondsRealtime(this.lifeTime);
 
 		Destroy(this.gameObject);
 	}
