@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
         TrashMan.despawn(character.gameObject);
         TrashMan.despawn(controller.gameObject);
 
-        this.AddScore(0);
+        this.AddScore(100);
     }
 
     void HandlePlayerHurt(Character character)
