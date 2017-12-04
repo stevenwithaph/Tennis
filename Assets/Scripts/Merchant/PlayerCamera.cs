@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour
 {
 	public float followSpeed = 10.0f;
-
+	public float distance = 20.0f;
 	public Transform target;
 
     // Update is called once per frame
@@ -13,7 +13,7 @@ public class PlayerCamera : MonoBehaviour
     {
 		if(this.target)
 		{
-			Vector3 targetPosition = new Vector3(target.transform.position.x, 10, target.transform.position.z + -9f);
+			Vector3 targetPosition = new Vector3(target.transform.position.x, this.distance, target.transform.position.z + -(this.distance - 0.5f));
 			this.transform.position = Vector3.Lerp(this.transform.position, targetPosition, this.followSpeed * Time.deltaTime);
 		}
     }

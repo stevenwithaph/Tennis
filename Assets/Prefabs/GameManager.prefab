@@ -61,6 +61,7 @@ MonoBehaviour:
   playerController: {fileID: 1832156883031826, guid: 0fe527f424459074faf50e104227adec,
     type: 2}
   tankSpawnInterval: 5
+  playerCamera: {fileID: 0}
   minimumPosition: {x: -10, y: 0, z: -7}
   maximumPosition: {x: 10, y: 0, z: 7}
 --- !u!114 &114509464549434536

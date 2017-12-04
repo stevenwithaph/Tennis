@@ -113,9 +113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c3582d878b2e4458f79144330d6288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bouncesToDestroy: 2
+  bouncesToDestroy: 4
   currentBounces: 0
   enemyTint: {r: 0.566, g: 0, b: 0, a: 1}
+  initialSpeed: 10
 --- !u!114 &114983647251445966
 MonoBehaviour:
   m_ObjectHideFlags: 1
