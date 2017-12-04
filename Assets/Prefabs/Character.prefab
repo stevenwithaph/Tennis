@@ -147,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 10
+  freezeTimeOnHit: 1
 --- !u!114 &114722924018140002
 MonoBehaviour:
   m_ObjectHideFlags: 1

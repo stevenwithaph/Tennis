@@ -12,12 +12,14 @@ namespace Merchant
 
         public Color enemyTint;
 
+        public float stretch = 25.0f;
+
         private new Rigidbody rigidbody;
 
         private Vector3 direction;
 
         private float speed = 10;
-        private float hitIncrease = 1f;
+        private float hitIncrease = 5.0f;
 
         public float initialSpeed = 10.0f;
 
@@ -81,6 +83,8 @@ namespace Merchant
 
         void PaddleBounce(Vector3 direction, float distance)
         {
+            GameManager.instance.FreezeTime();
+
             this.gameObject.layer = this.playerBallLayer.value;
             this.GetComponentInChildren<SpriteRenderer>().color = Color.white;
             this.AdjustSpeed(direction, this.speed + this.hitIncrease);
@@ -98,6 +102,8 @@ namespace Merchant
             this.rigidbody.velocity = direction * speed;
             this.speed = this.rigidbody.velocity.magnitude;
             this.direction = this.rigidbody.velocity.normalized;
+
+            Debug.Log(this.direction);
         }
 
         void CheckForDeath()

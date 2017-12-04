@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1487861053500328}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.43, y: 0.2, z: -3.81}
+  m_LocalPosition: {x: 4.377889, y: 1.15, z: -7.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4338761755749168}
@@ -69,7 +69,7 @@ Transform:
   m_GameObject: {fileID: 1018542332682232}
   m_LocalRotation: {x: 0.38268346, y: 0, z: 0, w: 0.9238795}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 4069014862034864}
   m_RootOrder: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   bouncesToDestroy: 4
   currentBounces: 0
   enemyTint: {r: 0.566, g: 0, b: 0, a: 1}
-  initialSpeed: 10
+  initialSpeed: 20
 --- !u!114 &114983647251445966
 MonoBehaviour:
   m_ObjectHideFlags: 1

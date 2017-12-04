@@ -27,7 +27,8 @@ public class CreateBallsOnTouch : MonoBehaviour
         float currentSpread = (spreadPiece * 360) - finalSpread + (randomAngle);
 
         Quaternion spreadRotation = Quaternion.LookRotation(Quaternion.Euler(0, currentSpread, 0) * this.transform.right);
+		Vector3 spawnPosition = new Vector3(this.transform.position.x, 0.5f, this.transform.position.z);
 
-		TrashMan.spawn(ball, this.transform.position, spreadRotation);
+		TrashMan.spawn(ball, spawnPosition, spreadRotation);
 	}
 }

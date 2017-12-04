@@ -12,6 +12,7 @@ public class StartOptions : MonoBehaviour {
 	public bool changeScenes;											//If true, load a new scene when Start is pressed, if false, fade out UI and continue in single scene
 	public bool changeMusicOnStart;										//Choose whether to continue playing menu music or start a new music clip
 
+	public bool inGame = false;
 
 	[HideInInspector] public bool inMainMenu = true;					//If true, pause button disabled in main menu (Cancel in input manager, default escape key)
 	[HideInInspector] public Animator animColorFade; 					//Reference to animator which will fade to and from black when starting game.
@@ -34,6 +35,13 @@ public class StartOptions : MonoBehaviour {
 		playMusic = GetComponent<PlayMusic> ();
 	}
 
+	void Update()
+	{
+		if(!this.inGame && Input.GetMouseButtonUp(0))
+		{
+			this.StartButtonClicked();
+		}
+	}
 
 	public void StartButtonClicked()
 	{
@@ -60,6 +68,8 @@ public class StartOptions : MonoBehaviour {
 			//Call the StartGameInScene function to start game without loading a new scene.
 			StartGameInScene();
 		}
+
+		this.inGame = true;
 
 	}
 

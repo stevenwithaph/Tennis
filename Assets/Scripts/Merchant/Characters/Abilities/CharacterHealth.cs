@@ -15,8 +15,7 @@ namespace Merchant.Characters.Abilities
 
         public int maxHealth = 10;
 
-        private float invulnerabilityTimer = 0f;
-        private bool isInvulnerable = false;
+        public bool freezeTimeOnHit = false;
 
         private new Renderer renderer;
 
@@ -33,12 +32,12 @@ namespace Merchant.Characters.Abilities
         }
 
         public void TakeDamage(int damage)
-        {
-            if (this.isInvulnerable)
+        {   
+            if(this.freezeTimeOnHit)
             {
-                return;
+                GameManager.instance.FreezeTime();
             }
-            
+
             this.health -= damage;
 
             this.StartCoroutine(this.Flash());
@@ -53,19 +52,6 @@ namespace Merchant.Characters.Abilities
                     this.OnDeath(this.character);
                 }
             }
-            else
-            {
-                this.StartCoroutine(this.InvulnerabilityTimer());
-            }
-        }
-
-        private IEnumerator InvulnerabilityTimer()
-        {
-            this.isInvulnerable = true;
-
-            yield return new WaitForSeconds(this.invulnerabilityTimer);
-
-            this.isInvulnerable = false;
         }
 
         protected IEnumerator Flash()
