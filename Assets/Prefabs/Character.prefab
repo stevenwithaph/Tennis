@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114722924018140002}
   - component: {fileID: 114905965721995058}
   - component: {fileID: 114908146573906814}
+  - component: {fileID: 114695172997580254}
   m_Layer: 8
   m_Name: Character
   m_TagString: Player
@@ -133,6 +134,19 @@ MonoBehaviour:
   isAttacking: 0
   startingWeapon: {fileID: 114925150462862306, guid: 5908a5ae5eb53a844a3c62bbdd4199dc,
     type: 2}
+--- !u!114 &114695172997580254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405886018984822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ab98cffd8ba343b38790aeddc7a9503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
 --- !u!114 &114722924018140002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbedcb967d5aa408caf1348311370ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
 --- !u!114 &114908146573906814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -197,7 +212,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 250a28c38a3b64b85a860ce4ebf94bc8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

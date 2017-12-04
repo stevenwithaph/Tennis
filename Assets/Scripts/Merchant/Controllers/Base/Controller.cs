@@ -12,10 +12,12 @@ namespace Merchant.Controllers.Base
         public virtual void Posses(Character character)
         {
             this.character = character;
+            this.character.owner = this;
         }
 
         public virtual void Unposses()
         {
+            this.character.owner = null;
             this.character = null;
         }
     }   

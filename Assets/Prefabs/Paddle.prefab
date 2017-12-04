@@ -106,7 +106,7 @@ MonoBehaviour:
   rotationOffset: 90
   flipOnAttack: 1
   owner: {fileID: 0}
-  offset: {x: 0.5, y: 0, z: 0}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!212 &212037343258093470
 SpriteRenderer:
   m_ObjectHideFlags: 1

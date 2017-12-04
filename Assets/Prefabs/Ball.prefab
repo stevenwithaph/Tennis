@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4338761755749168}
   - component: {fileID: 212268084743892284}
   - component: {fileID: 114983647251445966}
-  m_Layer: 13
+  m_Layer: 16
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 135894717757944008}
   - component: {fileID: 114495499541625322}
   - component: {fileID: 114044781506946686}
-  m_Layer: 13
+  m_Layer: 16
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,6 +113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c3582d878b2e4458f79144330d6288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bouncesToDestroy: 2
+  currentBounces: 0
+  enemyTint: {r: 0.566, g: 0, b: 0, a: 1}
 --- !u!114 &114983647251445966
 MonoBehaviour:
   m_ObjectHideFlags: 1

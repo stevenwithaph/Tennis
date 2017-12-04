@@ -6,6 +6,12 @@ namespace Merchant
 {
     public class Ball : MonoBehaviour
     {
+        public int bouncesToDestroy = 4;
+
+        public int currentBounces = 0;
+
+        public Color enemyTint;
+
         private new Rigidbody rigidbody;
 
         private Vector3 direction;
@@ -13,20 +19,38 @@ namespace Merchant
         private float speed = 10;
         private float hitIncrease = 1f;
 
+        public float initialSpeed = 10.0f;
+
         private LayerMask paddleLayer;
         private LayerMask wallLayer;
         private LayerMask enemyLayer;
         private LayerMask playerLayer;
 
-        void Start()
+        private LayerMask enemyBallLayer;
+        private LayerMask playerBallLayer;
+
+        void Awake()
         {
             this.rigidbody = this.GetComponent<Rigidbody>();
-            this.AdjustSpeed(Vector3.forward, 10);
 
             this.paddleLayer = LayerMask.NameToLayer("Paddle");
             this.wallLayer = LayerMask.NameToLayer("Wall");
             this.enemyLayer = LayerMask.NameToLayer("Enemy");
             this.playerLayer = LayerMask.NameToLayer("Player");
+
+            this.enemyBallLayer = LayerMask.NameToLayer("EnemyBall");
+            this.playerBallLayer = LayerMask.NameToLayer("PlayerBall");
+        }
+
+        void OnEnable()
+        {
+            this.gameObject.layer = this.enemyBallLayer.value;
+            this.GetComponentInChildren<SpriteRenderer>().color = this.enemyTint;
+
+            this.AdjustSpeed(this.transform.forward, 10);
+            
+            this.speed = this.initialSpeed;
+            this.currentBounces = 0;
         }
 
         void OnCollisionEnter(Collision collision)
@@ -57,6 +81,8 @@ namespace Merchant
 
         void PaddleBounce(Vector3 direction, float distance)
         {
+            this.gameObject.layer = this.playerBallLayer.value;
+            this.GetComponentInChildren<SpriteRenderer>().color = Color.white;
             this.AdjustSpeed(direction, this.speed + this.hitIncrease);
         }
 
@@ -64,6 +90,7 @@ namespace Merchant
         {
             Vector3 newDirection = Vector3.Reflect(direction, normal);
             this.AdjustSpeed(newDirection, this.speed);
+            this.CheckForDeath();
         }
 
         void AdjustSpeed(Vector3 direction, float speed)
@@ -71,6 +98,16 @@ namespace Merchant
             this.rigidbody.velocity = direction * speed;
             this.speed = this.rigidbody.velocity.magnitude;
             this.direction = this.rigidbody.velocity.normalized;
+        }
+
+        void CheckForDeath()
+        {
+            this.currentBounces++;
+
+            if(this.currentBounces == this.bouncesToDestroy)
+            {
+                TrashMan.despawn(this.gameObject);
+            }
         }
     }
 }

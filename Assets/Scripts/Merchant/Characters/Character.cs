@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Merchant.Characters.Abilities;
+using Merchant.Controllers.Base;
 
 namespace Merchant.Characters
 {
@@ -21,6 +22,8 @@ namespace Merchant.Characters
         public CharacterAttack attack;
         [NonSerialized]
         public CharacterHealth health;
+
+        public Controller owner; 
 
         private void Awake()
         {

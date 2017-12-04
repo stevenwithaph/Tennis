@@ -90,9 +90,9 @@ GameObject:
   - component: {fileID: 135602028173293854}
   - component: {fileID: 23073753449461656}
   - component: {fileID: 54610857683704942}
-  - component: {fileID: 114468598988274904}
   - component: {fileID: 114258526657491386}
-  m_Layer: 10
+  - component: {fileID: 114490027878061592}
+  m_Layer: 15
   m_Name: TankCannonBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d36f75455064b99b1de031a12e0cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114468598988274904
+--- !u!114 &114490027878061592
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -255,10 +255,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1927704540962518}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcd1340555a22424d85e688b25ec9485, type: 3}
+  m_Script: {fileID: 11500000, guid: d93fffef401674cd492dec04763779d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  numberOfBalls: 4
+  ball: {fileID: 1487861053500328, guid: 34b557249665c5a44b411a30761a00e7, type: 2}
 --- !u!114 &114562429512062996
 MonoBehaviour:
   m_ObjectHideFlags: 1

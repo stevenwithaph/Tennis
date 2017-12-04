@@ -6,9 +6,6 @@ using Merchant.Characters;
 
 public class TankController : AIController
 {
-	public float minTimeBetweenAttacks = 2.0f;
-	public float maxTimeBetweenAttacks = 5.0f;
-
 	protected TankShoot tankShoot;
 
 	public override void Posses(Character possessing)

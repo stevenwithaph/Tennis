@@ -25,7 +25,7 @@ public class Weapon : MonoBehaviour
 	public bool flipOnAttack = false;
 
 	public Character owner;
-	public Vector3 offset = Vector3.zero;
+	public float offset = 0.5f;
 
     private bool canFire = true;
     private bool triggerDown = false;
@@ -77,23 +77,13 @@ public class Weapon : MonoBehaviour
 
     protected virtual GameObject SpawnBullet(int currentBulletCount)
     {
-        float finalSpread = (float)(this.bulletCount-1) / (float)this.bulletCount * this.spread / 2;
-
-        float spreadPiece = (float)currentBulletCount / (float)this.bulletCount;
-        float currentSpread = (spreadPiece * this.spread) - finalSpread;
-
-        Quaternion spreadRotation = Quaternion.LookRotation(Quaternion.Euler(0, currentSpread, 0) * this.transform.right);
-        
-        float accuracyRandom = Random.Range(-this.accuracy, this.accuracy);
-        Vector3 accuracyPosition = new Vector3(0, 0, accuracyRandom);
-        accuracyPosition = spreadRotation * accuracyPosition;
-
 		Quaternion rotation = this.transform.rotation * Quaternion.Euler(0, -this.rotationOffset, 0);
-		Vector3 spawnRotated = rotation * this.offset;
+        
+        Vector3 offset = rotation * (Vector3.right * this.offset);
 
         GameObject bullet = Instantiate(
             this.bullet,
-            this.spawn.position + accuracyPosition + spawnRotated,
+            this.spawn.position,//+ offset,
             rotation
         );
 

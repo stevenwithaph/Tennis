@@ -11,7 +11,7 @@ namespace Merchant.Characters.Abilities
     {
         public int health = 0;
 
-        public Action OnDeath;
+        public Action<Character> OnDeath;
 
         public int maxHealth = 10;
 
@@ -20,10 +20,16 @@ namespace Merchant.Characters.Abilities
 
         private new Renderer renderer;
 
-        protected void Start()
+        protected override void Awake()
         {
+            base.Awake();
             this.renderer = this.GetComponentInChildren<Renderer>();
+        }
+
+        protected void OnEnable()
+        {
             this.health = this.maxHealth;
+            this.renderer.material.SetFloat("_FlashAmount", 0);
         }
 
         public void TakeDamage(int damage)
@@ -40,9 +46,11 @@ namespace Merchant.Characters.Abilities
             if (this.health <= 0)
             {
                 this.health = 0;
+                this.StopAllCoroutines();
+
                 if(this.OnDeath != null)
                 {
-                    this.OnDeath();
+                    this.OnDeath(this.character);
                 }
             }
             else

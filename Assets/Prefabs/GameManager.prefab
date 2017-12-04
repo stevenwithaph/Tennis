@@ -57,6 +57,12 @@ MonoBehaviour:
     type: 2}
   bot: {fileID: 0}
   botController: {fileID: 0}
+  player: {fileID: 1405886018984822, guid: 5a56d7b9d1075014ca2212c78283302d, type: 2}
+  playerController: {fileID: 1832156883031826, guid: 0fe527f424459074faf50e104227adec,
+    type: 2}
+  tankSpawnInterval: 5
+  minimumPosition: {x: -10, y: 0, z: -7}
+  maximumPosition: {x: 10, y: 0, z: 7}
 --- !u!114 &114509464549434536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,7 +74,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ddf7a5150a474960a78be74651f1a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recycleBinCollection: []
+  recycleBinCollection:
+  - prefab: {fileID: 1343605681808932, guid: 21c56590d4ba84f7a8fd744592293faa, type: 2}
+    instancesToPreallocate: 5
+    instancesToAllocateIfEmpty: 1
+    imposeHardLimit: 0
+    hardLimit: 5
+    cullExcessPrefabs: 0
+    instancesToMaintainInPool: 5
+    cullInterval: 10
+    automaticallyRecycleParticleSystems: 0
+    persistBetweenScenes: 0
+  - prefab: {fileID: 1431396048358138, guid: 8edf5dd80713d438683e2696abfb5c45, type: 2}
+    instancesToPreallocate: 5
+    instancesToAllocateIfEmpty: 1
+    imposeHardLimit: 0
+    hardLimit: 5
+    cullExcessPrefabs: 0
+    instancesToMaintainInPool: 5
+    cullInterval: 10
+    automaticallyRecycleParticleSystems: 0
+    persistBetweenScenes: 0
+  - prefab: {fileID: 1487861053500328, guid: 34b557249665c5a44b411a30761a00e7, type: 2}
+    instancesToPreallocate: 5
+    instancesToAllocateIfEmpty: 1
+    imposeHardLimit: 0
+    hardLimit: 5
+    cullExcessPrefabs: 0
+    instancesToMaintainInPool: 5
+    cullInterval: 10
+    automaticallyRecycleParticleSystems: 0
+    persistBetweenScenes: 0
   cullExcessObjectsInterval: 10
   persistBetweenScenes: 0
   transform: {fileID: 0}
