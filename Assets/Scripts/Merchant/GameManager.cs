@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     public float tankSpawnInterval = 10.0f;
 
+    public PlayerCamera playerCamera;
+
     public Vector3 minimumPosition = Vector3.zero;
     public Vector3 maximumPosition = Vector3.zero;
     // Use this for initialization
@@ -66,6 +68,8 @@ public class GameManager : MonoBehaviour
         
         playerCharacter.GetComponent<CharacterHealth>().OnDeath += HandlePlayerDeath;
         controller.Posses(playerCharacter);
+
+        //this.playerCamera.target = playerCharacter.transform;
     }
 
     IEnumerator TankSpawner()
@@ -98,6 +102,6 @@ public class GameManager : MonoBehaviour
 
     void HandlePlayerDeath(Character character)
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }

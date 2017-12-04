@@ -8,8 +8,11 @@ public class CreateBallsOnTouch : MonoBehaviour
 
 	public GameObject ball;
 
+	private float randomAngle = 0.0f;
+
 	void OnCollisionEnter()
 	{
+		randomAngle += Random.Range(0, 360);
 		for(int i = 0; i < this.numberOfBalls; i++)
 		{
 			SpawnBall(i);
@@ -21,7 +24,7 @@ public class CreateBallsOnTouch : MonoBehaviour
 		float finalSpread = (float)(this.numberOfBalls-1) / (float)this.numberOfBalls * 360 / 2;
 
         float spreadPiece = (float)currentBallCount / (float)this.numberOfBalls;
-        float currentSpread = (spreadPiece * 360) - finalSpread;
+        float currentSpread = (spreadPiece * 360) - finalSpread + (randomAngle);
 
         Quaternion spreadRotation = Quaternion.LookRotation(Quaternion.Euler(0, currentSpread, 0) * this.transform.right);
 
