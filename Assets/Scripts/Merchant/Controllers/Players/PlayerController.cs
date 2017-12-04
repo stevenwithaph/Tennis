@@ -41,7 +41,8 @@ namespace Merchant.Controllers.Players
 
             if(Input.GetButtonUp("Dash"))
             {
-                this.character.movement.Dash(direction);
+                Vector3 dashDirection = new Vector3(Mathf.Sin(Mathf.Deg2Rad * rotation), 0, Mathf.Cos(Mathf.Deg2Rad * rotation));
+                this.character.movement.Dash(dashDirection);
             }
         }
     }
