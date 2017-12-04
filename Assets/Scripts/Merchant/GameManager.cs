@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
         playerCharacter.GetComponent<CharacterHealth>().OnHurt += HandlePlayerHurt;
         controller.Posses(playerCharacter);
 
-        this.playerCamera.target = playerCharacter.transform;
+        //this.playerCamera.target = playerCharacter.transform;
     }
 
     IEnumerator EnemySpawner()
