@@ -20,22 +20,31 @@ public class Weapon : MonoBehaviour
 
     public bool automatic = false;
 
-	public float rotationOffset = 0.0f;
+    public float rotationOffset = 0.0f;
 
-	public bool flipOnAttack = false;
+    public bool flipOnAttack = false;
 
-	public Character owner;
-	public float offset = 0.5f;
+    public Character owner;
+    public float offset = 0.5f;
+
+    public AudioClip clip;
+
+    private AudioSource source;
 
     private bool canFire = true;
     private bool triggerDown = false;
 
+    void Awake()
+    {
+        this.source = this.GetComponent<AudioSource>();
+    }
+
     void Start()
     {
-		if(!this.spawn)
-		{
-			this.spawn = this.owner.transform;
-		}
+        if (!this.spawn)
+        {
+            this.spawn = this.owner.transform;
+        }
     }
 
     public void Pressed()
@@ -53,22 +62,22 @@ public class Weapon : MonoBehaviour
     {
         if (this.canFire)
         {
-            for(int i = 0; i < this.bulletCount; i++)
+            for (int i = 0; i < this.bulletCount; i++)
             {
                 this.SpawnBullet(i);
             }
 
             this.canFire = false;
 
-			if(this.flipOnAttack)
-			{
-				this.rotationOffset = this.rotationOffset * -1;
-			}
+            if (this.flipOnAttack)
+            {
+                this.rotationOffset = this.rotationOffset * -1;
+            }
 
             yield return new WaitForSecondsRealtime(this.fireRate);
             this.canFire = true;
 
-            if(this.automatic && this.triggerDown) 
+            if (this.automatic && this.triggerDown)
             {
                 this.StartCoroutine(this.Fire());
             }
@@ -77,7 +86,8 @@ public class Weapon : MonoBehaviour
 
     protected virtual GameObject SpawnBullet(int currentBulletCount)
     {
-		Quaternion rotation = this.transform.rotation * Quaternion.Euler(0, -this.rotationOffset, 0);
+        this.source.PlayOneShot(this.clip);
+        Quaternion rotation = this.transform.rotation * Quaternion.Euler(0, -this.rotationOffset, 0);
 
         GameObject bullet = Instantiate(
             this.bullet,

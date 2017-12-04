@@ -31,9 +31,13 @@ namespace Merchant
         private LayerMask enemyBallLayer;
         private LayerMask playerBallLayer;
 
+        public AudioClip clip;
+        private AudioSource source;
+
         void Awake()
         {
             this.rigidbody = this.GetComponent<Rigidbody>();
+            this.source = this.GetComponent<AudioSource>();
 
             this.paddleLayer = LayerMask.NameToLayer("Paddle");
             this.wallLayer = LayerMask.NameToLayer("Wall");
@@ -85,6 +89,7 @@ namespace Merchant
         {
             GameManager.instance.FreezeTime();
 
+            this.source.PlayOneShot(this.clip);
             this.gameObject.layer = this.playerBallLayer.value;
             this.GetComponentInChildren<SpriteRenderer>().color = Color.white;
             this.AdjustSpeed(direction, this.speed + this.hitIncrease);

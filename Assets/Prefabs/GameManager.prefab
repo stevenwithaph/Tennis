@@ -67,6 +67,9 @@ MonoBehaviour:
   minimumPosition: {x: -10, y: 0, z: -7}
   maximumPosition: {x: 10, y: 0, z: 7}
   gameOverPanel: {fileID: 0}
+  health: {fileID: 0}
+  scoreText: {fileID: 0}
+  score: 0
 --- !u!114 &114509464549434536
 MonoBehaviour:
   m_ObjectHideFlags: 1
