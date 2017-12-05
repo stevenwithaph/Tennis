@@ -313,7 +313,7 @@ Transform:
   m_Father: {fileID: 53804904}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &234841480
+--- !u!1001 &247335218
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -322,7 +322,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4069014862034864, guid: 34b557249665c5a44b411a30761a00e7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 4.377889
       objectReference: {fileID: 0}
     - target: {fileID: 4069014862034864, guid: 34b557249665c5a44b411a30761a00e7, type: 2}
       propertyPath: m_LocalPosition.y
@@ -330,7 +330,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4069014862034864, guid: 34b557249665c5a44b411a30761a00e7, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -7.28
       objectReference: {fileID: 0}
     - target: {fileID: 4069014862034864, guid: 34b557249665c5a44b411a30761a00e7, type: 2}
       propertyPath: m_LocalRotation.x
@@ -356,11 +356,6 @@ Prefab:
         type: 2}
       propertyPath: bouncesToDestroy
       value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 114495499541625322, guid: 34b557249665c5a44b411a30761a00e7,
-        type: 2}
-      propertyPath: playerOwned
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34b557249665c5a44b411a30761a00e7, type: 2}
@@ -761,12 +756,12 @@ Prefab:
     - target: {fileID: 224262027593705842, guid: b6707a510a7bb4f26b534077e81c88c1,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 640
+      value: 478
       objectReference: {fileID: 0}
     - target: {fileID: 224262027593705842, guid: b6707a510a7bb4f26b534077e81c88c1,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 360
+      value: 272.5
       objectReference: {fileID: 0}
     - target: {fileID: 224262027593705842, guid: b6707a510a7bb4f26b534077e81c88c1,
         type: 2}
@@ -861,7 +856,7 @@ Prefab:
     - target: {fileID: 224740061292857502, guid: b6707a510a7bb4f26b534077e81c88c1,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 300
+      value: 212.5
       objectReference: {fileID: 0}
     - target: {fileID: 114594664623569222, guid: b6707a510a7bb4f26b534077e81c88c1,
         type: 2}
@@ -1218,7 +1213,7 @@ Prefab:
     - target: {fileID: 114157668150210456, guid: e9bb29556b59a452bbe590db7b26af68,
         type: 2}
       propertyPath: tankSpawnInterval
-      value: 7.5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9bb29556b59a452bbe590db7b26af68, type: 2}
