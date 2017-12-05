@@ -4,56 +4,130 @@ using UnityEngine;
 
 namespace Merchant
 {
-	public class Ball : MonoBehaviour 
-	{
-		private new Rigidbody2D rigidbody;
+    public class Ball : MonoBehaviour
+    {
+        public int bouncesToDestroy = 4;
+        public int currentBounces = 0;
 
-		private Vector2 direction;
+        public Color enemyTint;
 
-		private float speed = 10;
-		private float hitIncrease = 0.1f;
+        public float stretch = 25.0f;
 
-		private LayerMask paddleLayer;
+        private new Rigidbody rigidbody;
 
-		void Start()
-		{
-			this.rigidbody = this.GetComponent<Rigidbody2D>();
-			this.AdjustSpeed(Vector2.up, 10);
+        private Vector3 direction;
 
-			this.paddleLayer = LayerMask.NameToLayer("Paddle");
-		}
+        private float speed = 10;
+        public float hitIncrease = 2.50f;
 
-		void OnCollisionEnter2D(Collision2D collison)
-		{
-			this.Bounce(collison.contacts[0].normal);
-		}
+        public float initialSpeed = 10.0f;
 
-		void OnTriggerEnter2D(Collider2D collider)
-		{
-			Vector2 collisionDirection = this.transform.position - collider.transform.position;
-			float angle = Mathf.Atan2(collisionDirection.y, collisionDirection.x) * Mathf.Rad2Deg;
+        public bool playerOwned = true;
 
-			this.PaddleBounce(collider.transform.right, 0);
-		}
+        private LayerMask paddleLayer;
+        private LayerMask wallLayer;
+        private LayerMask enemyLayer;
+        private LayerMask playerLayer;
 
-		void PaddleBounce(Vector2 direction, float distance)
-		{
-			this.AdjustSpeed(direction, this.speed + this.hitIncrease);
-		}
+        private LayerMask enemyBallLayer;
+        private LayerMask playerBallLayer;
 
-		void Bounce(Vector2 normal)
-		{
-			Vector2 newDirection = Vector2.Reflect(direction, normal);
-			this.AdjustSpeed(newDirection, this.speed);
-		}
+        public AudioClip clip;
+        private AudioSource source;
 
-		void AdjustSpeed(Vector2 direction, float speed)
-		{
-			this.rigidbody.velocity = direction * speed;
-			this.speed = this.rigidbody.velocity.magnitude;
-			this.direction = this.rigidbody.velocity.normalized;
-		}
-	}
+        void Awake()
+        {
+            this.rigidbody = this.GetComponent<Rigidbody>();
+            this.source = this.GetComponent<AudioSource>();
+
+            this.paddleLayer = LayerMask.NameToLayer("Paddle");
+            this.wallLayer = LayerMask.NameToLayer("Wall");
+            this.enemyLayer = LayerMask.NameToLayer("Enemy");
+            this.playerLayer = LayerMask.NameToLayer("Player");
+
+            this.enemyBallLayer = LayerMask.NameToLayer("EnemyBall");
+            this.playerBallLayer = LayerMask.NameToLayer("PlayerBall");
+        }
+
+        void Start()
+        {
+            this.AdjustSpeed(this.transform.forward, this.initialSpeed);
+        }
+
+        void OnEnable()
+        {
+            if(!this.playerOwned)
+            {
+                this.gameObject.layer = this.enemyBallLayer.value;
+                this.GetComponentInChildren<SpriteRenderer>().color = this.enemyTint;
+            }
+            
+            this.speed = this.initialSpeed;
+            this.currentBounces = 0;
+
+            this.AdjustSpeed(this.transform.forward, this.initialSpeed);
+        }
+
+        void OnCollisionEnter(Collision collision)
+        {
+            if (collision.collider.gameObject.layer == this.wallLayer.value)
+            {
+                this.Bounce(collision.contacts[0].normal);
+            }
+            else if (collision.collider.gameObject.layer == this.enemyLayer.value ||
+                collision.collider.gameObject.layer == this.playerLayer)
+            {
+                Vector3 normal = this.transform.position - collision.collider.transform.position;
+                normal.y = 0;
+                normal.Normalize();
+                this.Bounce(normal);
+            }
+        }
+
+        void OnTriggerEnter(Collider collider)
+        {
+            if (collider.gameObject.layer == this.paddleLayer.value)
+            {
+                Vector3 collisionDirection = this.transform.position - collider.transform.position;
+                float angle = Mathf.Atan2(collisionDirection.x, collisionDirection.z) * Mathf.Rad2Deg;
+                this.PaddleBounce(collider.transform.right, 0);
+            }
+        }
+
+        void PaddleBounce(Vector3 direction, float distance)
+        {
+            GameManager.instance.FreezeTime();
+
+            this.source.PlayOneShot(this.clip);
+            this.gameObject.layer = this.playerBallLayer.value;
+            this.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+            this.AdjustSpeed(direction, this.speed + this.hitIncrease);
+        }
+
+        void Bounce(Vector3 normal)
+        {
+            Vector3 newDirection = Vector3.Reflect(direction, normal);
+            this.AdjustSpeed(newDirection, this.speed);
+            this.CheckForDeath();
+        }
+
+        void AdjustSpeed(Vector3 direction, float speed)
+        {
+            this.rigidbody.velocity = direction * speed;
+            this.speed = this.rigidbody.velocity.magnitude;
+            this.direction = this.rigidbody.velocity.normalized;
+        }
+
+        void CheckForDeath()
+        {
+            this.currentBounces++;
+
+            if(this.currentBounces == this.bouncesToDestroy)
+            {
+                TrashMan.despawn(this.gameObject);
+            }
+        }
+    }
 }
 
 

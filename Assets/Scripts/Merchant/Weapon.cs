@@ -20,22 +20,31 @@ public class Weapon : MonoBehaviour
 
     public bool automatic = false;
 
-	public float rotationOffset = 0.0f;
+    public float rotationOffset = 0.0f;
 
-	public bool flipOnAttack = false;
+    public bool flipOnAttack = false;
 
-	public Character owner;
-	public Vector3 offset = Vector3.zero;
+    public Character owner;
+    public float offset = 0.5f;
+
+    public AudioClip clip;
+
+    private AudioSource source;
 
     private bool canFire = true;
     private bool triggerDown = false;
 
+    void Awake()
+    {
+        this.source = this.GetComponent<AudioSource>();
+    }
+
     void Start()
     {
-		if(!this.spawn)
-		{
-			this.spawn = this.owner.transform;
-		}
+        if (!this.spawn)
+        {
+            this.spawn = this.owner.transform;
+        }
     }
 
     public void Pressed()
@@ -49,51 +58,40 @@ public class Weapon : MonoBehaviour
         this.triggerDown = false;
     }
 
-    private IEnumerator Fire()
+    protected virtual IEnumerator Fire()
     {
         if (this.canFire)
         {
-            for(int i = 0; i < this.bulletCount; i++)
+            for (int i = 0; i < this.bulletCount; i++)
             {
                 this.SpawnBullet(i);
             }
 
             this.canFire = false;
 
-			if(this.flipOnAttack)
-			{
-				this.rotationOffset = this.rotationOffset * -1;
-			}
+            if (this.flipOnAttack)
+            {
+                this.rotationOffset = this.rotationOffset * -1;
+            }
 
-            yield return new WaitForSecondsRealtime(this.fireRate);
+            yield return new WaitForSeconds(this.fireRate);
             this.canFire = true;
 
-            if(this.automatic && this.triggerDown) 
+            if (this.automatic && this.triggerDown)
             {
                 this.StartCoroutine(this.Fire());
             }
         }
     }
 
-    private GameObject SpawnBullet(int currentBulletCount)
+    protected virtual GameObject SpawnBullet(int currentBulletCount)
     {
-        float finalSpread = (float)(this.bulletCount-1) / (float)this.bulletCount * this.spread / 2;
-
-        float spreadPiece = (float)currentBulletCount / (float)this.bulletCount;
-        float currentSpread = (spreadPiece * this.spread) - finalSpread;
-
-        Quaternion spreadRotation = Quaternion.LookRotation(Quaternion.Euler(0, currentSpread, 0) * this.transform.right);
-        
-        float accuracyRandom = Random.Range(-this.accuracy, this.accuracy);
-        Vector3 accuracyPosition = new Vector3(0, 0, accuracyRandom);
-        accuracyPosition = spreadRotation * accuracyPosition;
-
-		Quaternion rotation = this.transform.rotation * Quaternion.Euler(0, 0, -this.rotationOffset);
-		Vector3 spawnRotated = rotation * this.offset;
+        this.source.PlayOneShot(this.clip);
+        Quaternion rotation = this.transform.rotation * Quaternion.Euler(0, -this.rotationOffset, 0);
 
         GameObject bullet = Instantiate(
             this.bullet,
-            this.spawn.position + accuracyPosition + spawnRotated,
+            this.spawn.position,
             rotation
         );
 

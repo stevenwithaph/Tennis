@@ -15,14 +15,14 @@ TagManager:
   - 
   - Player
   - Paddle
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Bullet
+  - Wall
+  - Enemy
+  - Ball
+  - Ground
+  - BallCarrier
+  - EnemyBall
+  - PlayerBall
   - 
   - 
   - 
@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 2901158675
+    locked: 0
+  - name: Decal
+    uniqueID: 2973102361
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

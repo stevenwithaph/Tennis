@@ -6,14 +6,14 @@ using Merchant.Characters.Abilities;
 
 public class DamageOnTouch : MonoBehaviour
 {
-    public int damage = 0;
+    public int damage = 1;
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter(Collision collision)
     {
         CharacterHealth characterHealth = collision.gameObject.GetComponent<CharacterHealth>();
         if (characterHealth)
         {
-            //characterHealth.TakeDamage(this.damage);
+            characterHealth.TakeDamage(this.damage);
         }
     }
 }

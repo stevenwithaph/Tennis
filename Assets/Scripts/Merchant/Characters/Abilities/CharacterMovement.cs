@@ -7,10 +7,10 @@ using Merchant.Characters.Abilities.Base;
 
 namespace Merchant.Characters.Abilities
 {
-    [RequireComponent(typeof(CharacterController2D))]
+    [RequireComponent(typeof(CharacterController))]
     public class CharacterMovement : CharacterAbility
     {
-        public Vector2 Direction
+        public Vector3 Direction
         {
             get
             {
@@ -37,37 +37,46 @@ namespace Merchant.Characters.Abilities
         public float dashSpeed = 20.0f;
         public float dashTime = 0.25f;
 
+        public float dashCoolDown = 0.5f;
+
+        private bool canDash = true;
+
         public float movementSpeed = 5.0f;
-        private bool canMove = true;
+        public bool canMove = true;
+
         private bool isDashing = false;
 
-        private Vector2 direction;
-        private Vector2 dashDirection;
-        private CharacterController2D characterController;
+        private Vector3 direction;
+        private Vector3 dashDirection;
+        private CharacterController characterController;
 
         // Use this for initialization
         private void Start()
         {
-            this.characterController = this.GetComponent<CharacterController2D>();
+            this.characterController = this.GetComponent<CharacterController>();
+        }
 
-            Rigidbody2D body = this.GetComponent<Rigidbody2D>();
-
-            body.gravityScale = 0;
-            body.constraints = RigidbodyConstraints2D.FreezeAll;
+        protected void OnEnable()
+        {
+            this.canMove = true;
         }
 
         private void Update()
         {
-            this.characterController.move(
+            this.characterController.Move(
                 this.direction * this.movementSpeed * Time.deltaTime
             );
 
             if(this.isDashing)
             {
-                this.characterController.move(
+                this.characterController.Move(
                     this.dashDirection * this.dashSpeed * Time.deltaTime
                 );
             }
+
+            Vector3 position = this.character.transform.position;
+            position.y = 0;
+            this.character.transform.position = position;
         }
 
         public void PreventMovement()
@@ -81,20 +90,35 @@ namespace Merchant.Characters.Abilities
             this.canMove = true;
         }
 
-        public void Dash(Vector2 direction)
+        public void Dash(Vector3 direction)
         {
-            this.dashDirection = direction;
-            this.StartCoroutine(this.DashCoroutine());
+            if(this.canDash)
+            {
+                this.dashDirection = direction;
+                this.StartCoroutine(this.DashCoroutine());
+            }
         }
 
         private IEnumerator DashCoroutine()
         {
+            this.StartCoroutine(DashCooldown());
+
             this.isDashing = true;
             this.canMove = false;
+
             yield return new WaitForSeconds(this.dashTime);
 
             this.isDashing = false;
             this.canMove = true;
+        }
+
+        private IEnumerator DashCooldown()
+        {
+            this.canDash = false;
+
+            yield return new WaitForSeconds(this.dashCoolDown);
+
+            this.canDash = true;
         }
     }
 }

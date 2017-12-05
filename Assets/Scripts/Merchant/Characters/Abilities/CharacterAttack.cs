@@ -10,11 +10,11 @@ namespace Merchant.Characters.Abilities
         //  Should have a weapon class or something
         public bool isAttacking = false;
 
-        public GameObject paddleObject;
-
         public Weapon startingWeapon;
 
-        private Transform holder;
+        public bool facingRight = true;
+        
+        public Transform holder;
         private SpriteRenderer weaponSrpite;
         private SpriteRenderer characterSprite;
 
@@ -25,9 +25,13 @@ namespace Merchant.Characters.Abilities
         public void Start()
         {
             this.holder = Util.CreateChildGameobject(this.gameObject, "WeaponHolder").transform;
-            this.characterSprite = this.GetComponent<SpriteRenderer>();
+            this.holder.transform.localPosition = new Vector3(0, 0.5f, 0);
+            this.characterSprite = this.GetComponentInChildren<SpriteRenderer>();
 
-            this.SpawnWeapon();
+            if (this.startingWeapon)
+            {
+                this.SpawnWeapon();
+            }
         }
 
         private void SpawnWeapon()
@@ -46,43 +50,62 @@ namespace Merchant.Characters.Abilities
             weaponTransform.parent = this.holder;
 
             this.weaponSrpite = spawnedWeapon.GetComponentInChildren<SpriteRenderer>();
-            this.weaponSrpite.sortingOrder = this.characterSprite.sortingOrder;
+            if (this.weaponSrpite)
+            {
+                this.weaponSrpite.sortingOrder = this.characterSprite.sortingOrder;
+            }
 
             this.currentEquip = spawnedWeapon;
             this.currentEquip.owner = this.character;
         }
-        
+
 
         public void SetRotation(float rotation)
         {
             rotation = this.NormalizeAngle(rotation);
 
-            this.holder.rotation = Quaternion.Euler(0, 0, rotation + (this.currentEquip.rotationOffset * this.offset));
-            
-            if (rotation >= 90.0f && rotation <= 270.0f)
+            if(this.currentEquip)
             {
-                this.weaponSrpite.flipX = true;
-                this.characterSprite.flipX = true;
+                this.holder.rotation = Quaternion.Euler(0, rotation + (this.currentEquip.rotationOffset * this.offset), 0);
             }
             else
             {
-                this.weaponSrpite.flipX = false;
-                this.characterSprite.flipX = false;
+                this.holder.rotation = Quaternion.Euler(0, rotation, 0);
             }
 
-            if (rotation >= 0.0f && rotation <= 180.0f)
+            if (rotation >= 90.0f && rotation <= 270.0f)
             {
-                this.weaponSrpite.sortingOrder = this.characterSprite.sortingOrder - 1;
+                if (this.weaponSrpite)
+                {
+                    this.weaponSrpite.flipY = true;
+                }
+                this.characterSprite.flipX = this.facingRight ? true : false;
             }
             else
             {
-                this.weaponSrpite.sortingOrder = this.characterSprite.sortingOrder + 1;
+                if (this.weaponSrpite)
+                {
+                    this.weaponSrpite.flipY = false;
+                }
+                this.characterSprite.flipX = this.facingRight ? false : true;
+            }
+
+            if (this.weaponSrpite)
+            {
+                if (rotation >= 0.0f && rotation <= 180.0f)
+                {
+                    this.weaponSrpite.sortingOrder = this.characterSprite.sortingOrder - 1;
+                }
+                else
+                {
+                    this.weaponSrpite.sortingOrder = this.characterSprite.sortingOrder + 1;
+                }
             }
         }
 
         public void Pressed()
         {
-        this.currentEquip.Pressed();
+            this.currentEquip.Pressed();
         }
 
         public void Released()
