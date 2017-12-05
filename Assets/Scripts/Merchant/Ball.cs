@@ -7,7 +7,6 @@ namespace Merchant
     public class Ball : MonoBehaviour
     {
         public int bouncesToDestroy = 4;
-
         public int currentBounces = 0;
 
         public Color enemyTint;
@@ -48,15 +47,20 @@ namespace Merchant
             this.playerBallLayer = LayerMask.NameToLayer("PlayerBall");
         }
 
+        void Start()
+        {
+            this.AdjustSpeed(this.transform.forward, this.initialSpeed);
+        }
+
         void OnEnable()
         {
             this.gameObject.layer = this.enemyBallLayer.value;
             this.GetComponentInChildren<SpriteRenderer>().color = this.enemyTint;
-
-            this.AdjustSpeed(this.transform.forward, 10);
             
             this.speed = this.initialSpeed;
             this.currentBounces = 0;
+
+            this.AdjustSpeed(this.transform.forward, this.initialSpeed);
         }
 
         void OnCollisionEnter(Collision collision)

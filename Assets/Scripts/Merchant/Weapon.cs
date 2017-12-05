@@ -74,7 +74,7 @@ public class Weapon : MonoBehaviour
                 this.rotationOffset = this.rotationOffset * -1;
             }
 
-            yield return new WaitForSecondsRealtime(this.fireRate);
+            yield return new WaitForSeconds(this.fireRate);
             this.canFire = true;
 
             if (this.automatic && this.triggerDown)

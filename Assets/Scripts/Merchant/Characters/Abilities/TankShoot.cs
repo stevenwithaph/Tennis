@@ -50,14 +50,14 @@ public class TankShoot : AIAbility
         this.canFire = false;
         this.isFiring = true;
 
-        yield return new WaitForSecondsRealtime(soundTimer);
+        yield return new WaitForSeconds(soundTimer);
         this.source.PlayOneShot(this.clip);
-        yield return new WaitForSecondsRealtime(animationTimer);
+        yield return new WaitForSeconds(animationTimer);
         this.character.attack.Pressed();
         this.character.attack.Released();
 
         this.isFiring = false;
-        yield return new WaitForSecondsRealtime(Random.Range(minTimeBetweenAttacks, maxTimeBetweenAttacks));
+        yield return new WaitForSeconds(Random.Range(minTimeBetweenAttacks, maxTimeBetweenAttacks));
         this.canFire = true;
     }
 }

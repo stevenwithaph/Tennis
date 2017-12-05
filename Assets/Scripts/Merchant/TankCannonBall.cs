@@ -24,7 +24,7 @@ public class TankCannonBall : MonoBehaviour
 	{
 		this.target.SetActive(false);
 		this.animator.SetTrigger("DidCrash");
-		yield return new WaitForSecondsRealtime(0.5f);
+		yield return new WaitForSeconds(0.5f);
 		TrashMan.despawn(this.transform.parent.gameObject);
 	}
 }

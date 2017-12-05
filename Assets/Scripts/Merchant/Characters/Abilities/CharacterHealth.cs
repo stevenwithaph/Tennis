@@ -44,16 +44,12 @@ namespace Merchant.Characters.Abilities
                 GameManager.instance.FreezeTime();
             }
 
-            if(this.OnHurt != null)
+            this.health -= damage;
+
+            if (this.OnHurt != null)
             {
                 this.OnHurt(this.character);
             }
-
-            if (this.hurt)
-            {
-                this.source.PlayOneShot(this.hurt);
-            }
-            this.health -= damage;
 
             if (this.health <= 0)
             {
@@ -68,6 +64,10 @@ namespace Merchant.Characters.Abilities
             else
             {
                 this.StartCoroutine(this.Flash());
+                if (this.hurt)
+                {
+                    this.source.PlayOneShot(this.hurt);
+                }
             }
         }
 
@@ -75,7 +75,7 @@ namespace Merchant.Characters.Abilities
         {
             this.renderer.material.SetFloat("_FlashAmount", 1);
 
-            yield return new WaitForSecondsRealtime(0.1f);
+            yield return new WaitForSeconds(0.1f);
 
             this.renderer.material.SetFloat("_FlashAmount", 0);
         }

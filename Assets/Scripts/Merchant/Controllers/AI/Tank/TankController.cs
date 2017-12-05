@@ -11,11 +11,6 @@ public class TankController : AIController
 	public override void Posses(Character possessing)
 	{
 		base.Posses(possessing);
-		GameObject playerGameObject = GameObject.FindGameObjectWithTag("Player");
-		if(playerGameObject)
-		{
-			this.player = playerGameObject.GetComponent<Character>();
-		}
 		this.tankShoot = this.character.GetComponent<TankShoot>();
 	}
 

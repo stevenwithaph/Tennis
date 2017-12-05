@@ -1163,6 +1163,11 @@ Prefab:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 791229746}
+    - target: {fileID: 114157668150210456, guid: e9bb29556b59a452bbe590db7b26af68,
+        type: 2}
+      propertyPath: tankSpawnInterval
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9bb29556b59a452bbe590db7b26af68, type: 2}
   m_IsPrefabParent: 0

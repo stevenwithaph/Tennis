@@ -12,7 +12,9 @@ namespace Merchant.Characters.Abilities
 
         public Weapon startingWeapon;
 
-        private Transform holder;
+        public bool facingRight = true;
+        
+        public Transform holder;
         private SpriteRenderer weaponSrpite;
         private SpriteRenderer characterSprite;
 
@@ -62,7 +64,14 @@ namespace Merchant.Characters.Abilities
         {
             rotation = this.NormalizeAngle(rotation);
 
-            this.holder.rotation = Quaternion.Euler(0, rotation + (this.currentEquip.rotationOffset * this.offset), 0);
+            if(this.currentEquip)
+            {
+                this.holder.rotation = Quaternion.Euler(0, rotation + (this.currentEquip.rotationOffset * this.offset), 0);
+            }
+            else
+            {
+                this.holder.rotation = Quaternion.Euler(0, rotation, 0);
+            }
 
             if (rotation >= 90.0f && rotation <= 270.0f)
             {
@@ -70,7 +79,7 @@ namespace Merchant.Characters.Abilities
                 {
                     this.weaponSrpite.flipY = true;
                 }
-                this.characterSprite.flipX = true;
+                this.characterSprite.flipX = this.facingRight ? true : false;
             }
             else
             {
@@ -78,7 +87,7 @@ namespace Merchant.Characters.Abilities
                 {
                     this.weaponSrpite.flipY = false;
                 }
-                this.characterSprite.flipX = false;
+                this.characterSprite.flipX = this.facingRight ? false : true;
             }
 
             if (this.weaponSrpite)

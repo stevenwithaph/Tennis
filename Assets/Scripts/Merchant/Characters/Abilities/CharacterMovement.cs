@@ -38,7 +38,8 @@ namespace Merchant.Characters.Abilities
         public float dashTime = 0.25f;
 
         public float movementSpeed = 5.0f;
-        private bool canMove = true;
+        public bool canMove = true;
+
         private bool isDashing = false;
 
         private Vector3 direction;
@@ -49,6 +50,11 @@ namespace Merchant.Characters.Abilities
         private void Start()
         {
             this.characterController = this.GetComponent<CharacterController>();
+        }
+
+        protected void OnEnable()
+        {
+            this.canMove = true;
         }
 
         private void Update()
@@ -91,7 +97,7 @@ namespace Merchant.Characters.Abilities
             this.isDashing = true;
             this.canMove = false;
             
-            yield return new WaitForSecondsRealtime(this.dashTime);
+            yield return new WaitForSeconds(this.dashTime);
 
             this.isDashing = false;
             this.canMove = true;

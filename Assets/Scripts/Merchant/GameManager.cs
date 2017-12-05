@@ -80,13 +80,22 @@ public class GameManager : MonoBehaviour
     void SpawnRandomEnemy()
     {
         GameObject newEnemy = TrashMan.spawn(enemyDrop);
-        newEnemy.GetComponent<EnemyDrop>().enemyType = EnemyTypes.Tank;
-        newEnemy.GetComponent<EnemyDrop>().OnDrop += SpawnEnemy;
+        EnemyTypes newEnemyType = EnemyTypes.Tank;
+
+        float random = Random.Range(0.0f, 1.0f);
+        Debug.Log(random);
+        if(random > 0.5f)
+        {
+            newEnemyType = EnemyTypes.Bot;
+        }
+
+        newEnemy.GetComponent<EnemyDrop>().enemyType = newEnemyType;
+        newEnemy.GetComponent<EnemyDrop>().OnDrop += SpawnEnemyDrop;
 
         newEnemy.transform.position = this.RandomPosition();
     }
 
-    void SpawnEnemy(EnemyDrop enemyDrop)
+    void SpawnEnemyDrop(EnemyDrop enemyDrop)
     {
         Vector3 position = enemyDrop.transform.position;
 
@@ -95,15 +104,18 @@ public class GameManager : MonoBehaviour
             case EnemyTypes.Tank:
                 this.SpawnTank(position);
                 break;
+            case EnemyTypes.Bot:
+                this.SpawnBot(position);
+                break;
         }
 
-        enemyDrop.OnDrop -= SpawnEnemy;
+        enemyDrop.OnDrop -= SpawnEnemyDrop;
     }
 
-    void SpawnTank(Vector3 position)
+    void SpawnEnemy(Vector3 position, GameObject enemyType, GameObject enemyController)
     {
-        GameObject newTank = TrashMan.spawn(tank);
-        GameObject newController = TrashMan.spawn(tankController);
+        GameObject newTank = TrashMan.spawn(enemyType);
+        GameObject newController = TrashMan.spawn(enemyController);
 
         Character tankCharacter = newTank.GetComponent<Character>();
         AIController aiController = newController.GetComponent<AIController>();
@@ -114,9 +126,14 @@ public class GameManager : MonoBehaviour
         tankCharacter.transform.position = position;
     }
 
-    void SpawnBot()
+    void SpawnTank(Vector3 position)
     {
+        this.SpawnEnemy(position, tank, tankController);
+    }
 
+    void SpawnBot(Vector3 position)
+    {
+        this.SpawnEnemy(position, bot, botController);
     }
 
     void SpawnPlayer()
@@ -139,7 +156,7 @@ public class GameManager : MonoBehaviour
         while(true)
         {
             this.SpawnRandomEnemy();
-            yield return new WaitForSecondsRealtime(this.tankSpawnInterval);
+            yield return new WaitForSeconds(this.tankSpawnInterval);
         }
     }
 

@@ -56,8 +56,9 @@ MonoBehaviour:
   tank: {fileID: 1343605681808932, guid: 21c56590d4ba84f7a8fd744592293faa, type: 2}
   tankController: {fileID: 1431396048358138, guid: 8edf5dd80713d438683e2696abfb5c45,
     type: 2}
-  bot: {fileID: 0}
-  botController: {fileID: 0}
+  bot: {fileID: 1641502487145036, guid: 320274400b964314cafb03b1a10c4b7c, type: 2}
+  botController: {fileID: 1511286302529972, guid: 744c5fb7428b54cd0acdb29a7020f9fe,
+    type: 2}
   player: {fileID: 1405886018984822, guid: 5a56d7b9d1075014ca2212c78283302d, type: 2}
   playerController: {fileID: 1832156883031826, guid: 0fe527f424459074faf50e104227adec,
     type: 2}
@@ -113,6 +114,26 @@ MonoBehaviour:
     automaticallyRecycleParticleSystems: 0
     persistBetweenScenes: 0
   - prefab: {fileID: 1752770213783204, guid: 00f21496f251d4c9aa303605e4d38c1f, type: 2}
+    instancesToPreallocate: 5
+    instancesToAllocateIfEmpty: 1
+    imposeHardLimit: 0
+    hardLimit: 5
+    cullExcessPrefabs: 0
+    instancesToMaintainInPool: 5
+    cullInterval: 10
+    automaticallyRecycleParticleSystems: 0
+    persistBetweenScenes: 0
+  - prefab: {fileID: 1511286302529972, guid: 744c5fb7428b54cd0acdb29a7020f9fe, type: 2}
+    instancesToPreallocate: 5
+    instancesToAllocateIfEmpty: 1
+    imposeHardLimit: 0
+    hardLimit: 5
+    cullExcessPrefabs: 0
+    instancesToMaintainInPool: 5
+    cullInterval: 10
+    automaticallyRecycleParticleSystems: 0
+    persistBetweenScenes: 0
+  - prefab: {fileID: 1641502487145036, guid: 320274400b964314cafb03b1a10c4b7c, type: 2}
     instancesToPreallocate: 5
     instancesToAllocateIfEmpty: 1
     imposeHardLimit: 0
