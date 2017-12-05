@@ -22,6 +22,8 @@ namespace Merchant.Characters.Abilities
 
         public AudioClip hurt;
 
+        public GameObject spawnOnDeath;
+
         private new Renderer renderer;
 
         protected override void Awake()
@@ -55,6 +57,11 @@ namespace Merchant.Characters.Abilities
             {
                 this.health = 0;
                 this.StopAllCoroutines();
+
+                if(this.spawnOnDeath)
+                {
+                    TrashMan.spawn(this.spawnOnDeath, this.transform.position);
+                }
 
                 if (this.OnDeath != null)
                 {

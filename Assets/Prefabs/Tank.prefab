@@ -240,6 +240,7 @@ MonoBehaviour:
   dashSpeed: 20
   dashTime: 0.25
   movementSpeed: 5
+  canMove: 1
 --- !u!114 &114421334710308256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -254,6 +255,8 @@ MonoBehaviour:
   isAttacking: 0
   startingWeapon: {fileID: 114174311762105420, guid: 1c017a2de00e842e287969d36c8ef01a,
     type: 2}
+  facingRight: 1
+  holder: {fileID: 0}
 --- !u!114 &114668925749421946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,6 +283,8 @@ MonoBehaviour:
   maxHealth: 2
   freezeTimeOnHit: 0
   hurt: {fileID: 8300000, guid: d5cbf90f2bd3a49bdac2c6f00ad53324, type: 3}
+  spawnOnDeath: {fileID: 1757928840254840, guid: 4f89e198683f64f74a6b82f13bdd6884,
+    type: 2}
 --- !u!143 &143278158508621762
 CharacterController:
   m_ObjectHideFlags: 1

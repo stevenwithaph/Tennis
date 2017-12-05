@@ -33,6 +33,11 @@ namespace Merchant.Characters.Abilities
             this.currentBurstRound = 0;
         }
 
+        protected void OnDisable()
+        {
+            this.StopAllCoroutines();
+        }
+
         public void BeginFiring()
         {
             this.character.movement.PreventMovement();

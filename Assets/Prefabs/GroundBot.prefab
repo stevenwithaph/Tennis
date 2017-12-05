@@ -143,6 +143,7 @@ MonoBehaviour:
   dashSpeed: 20
   dashTime: 0.25
   movementSpeed: 5
+  canMove: 1
 --- !u!114 &114653844613192792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,7 +196,9 @@ MonoBehaviour:
   health: 0
   maxHealth: 5
   freezeTimeOnHit: 0
-  hurt: {fileID: 0}
+  hurt: {fileID: 8300000, guid: d5cbf90f2bd3a49bdac2c6f00ad53324, type: 3}
+  spawnOnDeath: {fileID: 1757928840254840, guid: 4f89e198683f64f74a6b82f13bdd6884,
+    type: 2}
 --- !u!114 &114926830895041320
 MonoBehaviour:
   m_ObjectHideFlags: 1
