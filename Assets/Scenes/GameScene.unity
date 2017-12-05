@@ -313,6 +313,58 @@ Transform:
   m_Father: {fileID: 53804904}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &234841480
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4069014862034864, guid: 34b557249665c5a44b411a30761a00e7, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069014862034864, guid: 34b557249665c5a44b411a30761a00e7, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069014862034864, guid: 34b557249665c5a44b411a30761a00e7, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069014862034864, guid: 34b557249665c5a44b411a30761a00e7, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069014862034864, guid: 34b557249665c5a44b411a30761a00e7, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069014862034864, guid: 34b557249665c5a44b411a30761a00e7, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069014862034864, guid: 34b557249665c5a44b411a30761a00e7, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069014862034864, guid: 34b557249665c5a44b411a30761a00e7, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114495499541625322, guid: 34b557249665c5a44b411a30761a00e7,
+        type: 2}
+      propertyPath: bouncesToDestroy
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 114495499541625322, guid: 34b557249665c5a44b411a30761a00e7,
+        type: 2}
+      propertyPath: playerOwned
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 34b557249665c5a44b411a30761a00e7, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &622317749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,7 +1218,7 @@ Prefab:
     - target: {fileID: 114157668150210456, guid: e9bb29556b59a452bbe590db7b26af68,
         type: 2}
       propertyPath: tankSpawnInterval
-      value: 10
+      value: 7.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9bb29556b59a452bbe590db7b26af68, type: 2}

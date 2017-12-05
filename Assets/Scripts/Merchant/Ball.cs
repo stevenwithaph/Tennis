@@ -22,6 +22,8 @@ namespace Merchant
 
         public float initialSpeed = 10.0f;
 
+        public bool playerOwned = true;
+
         private LayerMask paddleLayer;
         private LayerMask wallLayer;
         private LayerMask enemyLayer;
@@ -54,8 +56,11 @@ namespace Merchant
 
         void OnEnable()
         {
-            this.gameObject.layer = this.enemyBallLayer.value;
-            this.GetComponentInChildren<SpriteRenderer>().color = this.enemyTint;
+            if(!this.playerOwned)
+            {
+                this.gameObject.layer = this.enemyBallLayer.value;
+                this.GetComponentInChildren<SpriteRenderer>().color = this.enemyTint;
+            }
             
             this.speed = this.initialSpeed;
             this.currentBounces = 0;
