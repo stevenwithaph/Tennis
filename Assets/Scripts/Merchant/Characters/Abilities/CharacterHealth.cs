@@ -24,6 +24,9 @@ namespace Merchant.Characters.Abilities
 
         public GameObject spawnOnDeath;
 
+        public float invulnerabilityTimer = 0.0f;
+        public bool isInvulerable = false;
+
         private new Renderer renderer;
 
         protected override void Awake()
@@ -41,6 +44,11 @@ namespace Merchant.Characters.Abilities
 
         public void TakeDamage(int damage)
         {
+            if (isInvulerable)
+            {
+                return;
+            }
+
             if (this.freezeTimeOnHit)
             {
                 GameManager.instance.FreezeTime();
@@ -58,7 +66,7 @@ namespace Merchant.Characters.Abilities
                 this.health = 0;
                 this.StopAllCoroutines();
 
-                if(this.spawnOnDeath)
+                if (this.spawnOnDeath)
                 {
                     TrashMan.spawn(this.spawnOnDeath, this.transform.position);
                 }
@@ -71,11 +79,25 @@ namespace Merchant.Characters.Abilities
             else
             {
                 this.StartCoroutine(this.Flash());
+                if (this.invulnerabilityTimer > 0)
+                {
+                    this.StartCoroutine(this.Invulerable());
+                }
+
                 if (this.hurt)
                 {
                     this.source.PlayOneShot(this.hurt);
                 }
             }
+        }        
+
+        protected IEnumerator Invulerable()
+        {
+            this.isInvulerable = true;
+
+            yield return new WaitForSeconds(0.5f);
+
+            this.isInvulerable = false;
         }
 
         protected IEnumerator Flash()

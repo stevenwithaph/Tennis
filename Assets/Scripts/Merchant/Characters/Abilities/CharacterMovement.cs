@@ -37,6 +37,10 @@ namespace Merchant.Characters.Abilities
         public float dashSpeed = 20.0f;
         public float dashTime = 0.25f;
 
+        public float dashCoolDown = 0.5f;
+
+        private bool canDash = true;
+
         public float movementSpeed = 5.0f;
         public bool canMove = true;
 
@@ -88,19 +92,33 @@ namespace Merchant.Characters.Abilities
 
         public void Dash(Vector3 direction)
         {
-            this.dashDirection = direction;
-            this.StartCoroutine(this.DashCoroutine());
+            if(this.canDash)
+            {
+                this.dashDirection = direction;
+                this.StartCoroutine(this.DashCoroutine());
+            }
         }
 
         private IEnumerator DashCoroutine()
         {
+            this.StartCoroutine(DashCooldown());
+
             this.isDashing = true;
             this.canMove = false;
-            
+
             yield return new WaitForSeconds(this.dashTime);
 
             this.isDashing = false;
             this.canMove = true;
+        }
+
+        private IEnumerator DashCooldown()
+        {
+            this.canDash = false;
+
+            yield return new WaitForSeconds(this.dashCoolDown);
+
+            this.canDash = true;
         }
     }
 }
